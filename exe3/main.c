@@ -42,7 +42,7 @@ void process_task(void *p) {
             for (int i = 0; i < 5; i++) {
                 soma += values[i];
             }
-            printf("%d \n", soma/5);
+            printf("%d", soma/5);
 
 
             // deixar esse delay!
