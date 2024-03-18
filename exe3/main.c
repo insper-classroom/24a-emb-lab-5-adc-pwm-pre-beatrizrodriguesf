@@ -25,12 +25,25 @@ void data_task(void *p) {
 
 void process_task(void *p) {
     int data = 0;
+    int values[5];
+    int cont = 0;
 
     while (true) {
         if (xQueueReceive(xQueueData, &data, 100)) {
             // implementar filtro aqui!
-
-
+            cont ++;
+            if (cont <= 5) {
+                values[cont-1] = data;
+            } else {
+                values[cont%5-1] = data;
+            }
+            if (cont >= 5) {
+                int soma = 0;
+                for (int i = 0; i < 5; i++) {
+                    soma += values[i];
+                }
+                printf("%d \n", soma/5);
+            }
 
 
             // deixar esse delay!
